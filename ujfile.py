@@ -29,7 +29,7 @@ for (dirpath, dirnames, filenames) in walk(mypath):
 
     # f.append(filenames)
 
-print 'Leghosszabb filenév hossza: \033[1;37;30m %d \033[0;31;30m karakter, a file neve: "%s"' % (maxFilename, maxFile)
+print 'Leghosszabb filenév hossza: \033[1;31m %d \033[0;30m karakter, a file neve: "%s"' % (maxFilename, maxFile)
 
 # print type(maxFile)
 
