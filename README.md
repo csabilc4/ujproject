@@ -1,0 +1,2 @@
+# ujproject
+pycharm-ban készítve
