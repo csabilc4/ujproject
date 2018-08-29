@@ -29,7 +29,12 @@ for (dirpath, dirnames, filenames) in walk(mypath):
 
     # f.append(filenames)
 
-print 'Leghosszabb filenév hossza: \033[1;31m %d \033[0;30m karakter, a file neve: "%s"' % (maxFilename, maxFile)
+# print 'Leghosszabb filenév hossza: \033[1;31m %d \033[0;30m karakter, a file neve: "%s"' % (maxFilename, maxFile)
 
-# print type(maxFile)
+import pip
+# installed_packages = pip.get_installed_distributions()
+# installed_packages_list = sorted(["%s==%s" % (i.key, i.version)
+#                                   for i in installed_packages])
+# print(installed_packages_list)
 
+from bs4 import BeautifulSoup
