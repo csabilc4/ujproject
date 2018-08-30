@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-print "ez itt a pycharmban készült, majd feltöltöm github-baaa"
-print "na ez egy diff"
+# print "ez itt a pycharmban készült, majd feltöltöm github-baaa"
+# print "na ez egy diff"
 
 # TODO ez itt egy
 
@@ -31,12 +31,22 @@ for (dirpath, dirnames, filenames) in walk(mypath):
 
 # print 'Leghosszabb filenév hossza: \033[1;31m %d \033[0;30m karakter, a file neve: "%s"' % (maxFilename, maxFile)
 
-import pip
-# installed_packages = pip.get_installed_distributions()
-# installed_packages_list = sorted(["%s==%s" % (i.key, i.version)
-#                                   for i in installed_packages])
-# print(installed_packages_list)
+
+
+exit()
 
 from bs4 import BeautifulSoup
 
-# na ez a shelve
+import requests
+r = requests.get('http://www.rczbikeshop.com/default/sales/crazy-prices.html')
+# print r.text
+
+soup = BeautifulSoup(r.text, 'html.parser')
+
+results = soup.find_all('span', attrs={'class':'price'})
+
+print len(results)
+# print " ".join(results)
+print ''.join(str(results))
+print type(str((results[1])))
+
