@@ -38,3 +38,5 @@ import pip
 # print(installed_packages_list)
 
 from bs4 import BeautifulSoup
+
+# na ez a shelve
