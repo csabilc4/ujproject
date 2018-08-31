@@ -11,6 +11,9 @@
 
 from os import listdir
 from os import walk
+from bs4 import BeautifulSoup
+import time
+import requests
 
 mypath = "f:\Temp"
 
@@ -33,11 +36,6 @@ for (dirpath, dirnames, filenames) in walk(mypath):
 
 
 
-exit()
-
-from bs4 import BeautifulSoup
-
-import requests
 r = requests.get('http://www.rczbikeshop.com/default/sales/crazy-prices.html')
 # print r.text
 
@@ -47,6 +45,10 @@ results = soup.find_all('span', attrs={'class':'price'})
 
 print len(results)
 # print " ".join(results)
-print ''.join(str(results))
-print type(str((results[1])))
+# print ''.join(str(results))
+# print type(str((results[1])))
+print str((results[1]))
 
+currentDate = time.strftime("%Y%m%d_%H%M%S")
+
+print currentDate
