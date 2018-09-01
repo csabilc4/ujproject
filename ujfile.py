@@ -35,6 +35,40 @@ for (dirpath, dirnames, filenames) in walk(mypath):
 # print 'Leghosszabb filenév hossza: \033[1;31m %d \033[0;30m karakter, a file neve: "%s"' % (maxFilename, maxFile)
 
 
+import smtplib
+
+# import socket
+# socket.setdefaulttimeout(20)
+
+sender = 'revolve@revolve.hu'
+receivers = ['nemeth.csaba@revolve.hu', 'motox@freemail.hu']
+currentDate = time.strftime("%Y%m%d_%H%M%S")
+password = "GardA2006"
+message = "HAHO!!!!!!!!!!!"
+# message = """From: excelTool
+# To: cimzett
+# Subject: ...: Fashion Days Zrt. :... Excel Tool futtatas log %s""" % (currentDate)
+
+smtpObj = smtplib.SMTP_SSL('smtp.zoho.com',465)
+smtpObj.ehlo()
+smtpObj.login(sender,password)
+smtpObj.ehlo()
+
+smtpObj.sendmail(sender, receivers, message)
+print "Email sikeresen elkuldve!"
+
+# try:
+#     smtpObj = smtplib.SMTP_SSL('smtp.zoho.com',465)
+#     smtpObj.ehlo()
+#     smtpObj.login(sender,password)
+#
+#     smtpObj.sendmail(sender, receivers, message)
+#     print "Email sikeresen elkuldve!"
+# except:
+#     print "Hiba: Email kuldese sikertelen!"
+
+
+exit()
 
 r = requests.get('http://www.rczbikeshop.com/default/sales/crazy-prices.html')
 # print r.text
@@ -49,6 +83,3 @@ print len(results)
 # print type(str((results[1])))
 print str((results[1]))
 
-currentDate = time.strftime("%Y%m%d_%H%M%S")
-
-print currentDate
