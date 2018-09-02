@@ -43,8 +43,9 @@ from email.header import Header
 currentDate = time.strftime("%Y%m%d_%H%M%S")
 sender = 'revolve@revolve.hu'
 password = "GardA2006"
-receiver = 'nemeth.csaba@revolve.hu'    #,'motox@freemail.hu'
-subjectText = "..............Sent from python.............éáűőúöüóí"
+receiver = 'nemeth.csaba@revolve.hu,motox@freemail.hu'
+ccopy = 'nemeth.csaba@ingart.hu'
+subjectText = "..............Python_zuhu_smtp_mail.............éáűőúöüóí, dátum: " + currentDate
 massageText = ("Teszt email!! éáűőúöüóí")
 
 # Create message
@@ -52,14 +53,16 @@ massage = MIMEText(massageText, 'plain', 'UTF-8')
 massage['Subject'] = str(Header(subjectText, 'UTF-8'))
 massage['From'] = sender
 massage['To'] = receiver
+massage['Cc'] = ccopy
 
 # Create server object with SSL option, Perform operations via server
 smtpObj = smtplib.SMTP_SSL('smtp.zoho.com', 465)
 smtpObj.login(sender,password)
 smtpObj.sendmail(sender, receiver, massage.as_string())
+smtpObj.sendmail(sender, massage["To"].split(",") + massage["Cc"].split(","), massage.as_string())
 smtpObj.quit()
 
-print "Email sikeresen elkuldve!"
+print "E-mail sikeresen elkuldve!"
 
 # try:
 #     smtpObj = smtplib.SMTP_SSL('smtp.zoho.com',465)
