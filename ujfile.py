@@ -68,11 +68,6 @@ print "E-mail sikeresen elkuldve!"
 # except:
 #     print "Hiba: Email kuldese sikertelen!"
 
-
-
-
-
-
 exit()
 
 r = requests.get('http://www.rczbikeshop.com/default/sales/crazy-prices.html')
