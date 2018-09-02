@@ -37,35 +37,29 @@ for (dirpath, dirnames, filenames) in walk(mypath):
 
 import smtplib
 from email.mime.text import MIMEText
+from email.header import Header
 
-receiver = 'nemeth.csaba@revolve.hu'
+# Define to/from, texts
 currentDate = time.strftime("%Y%m%d_%H%M%S")
 sender = 'revolve@revolve.hu'
 password = "GardA2006"
-# message = "HAHO!!!!!!!!!!!"
-# message = """From: excelTool
-# To: cimzett
-# Subject: ...: Fashion Days Zrt. :... Excel Tool futtatas log %s""" % (currentDate)
+receiver = 'nemeth.csaba@revolve.hu'    #,'motox@freemail.hu'
+subjectText = "..............Sent from python.............éáűőúöüóí"
+massageText = ("Teszt email!! éáűőúöüóí")
 
 # Create message
-massage = MIMEText("Teszt email!! remélem sikerül")
-massage['Subject'] = "..............Sent from python............."
+massage = MIMEText(massageText, 'plain', 'UTF-8')
+massage['Subject'] = str(Header(subjectText, 'UTF-8'))
 massage['From'] = sender
 massage['To'] = receiver
 
+# Create server object with SSL option, Perform operations via server
 smtpObj = smtplib.SMTP_SSL('smtp.zoho.com', 465)
 smtpObj.login(sender,password)
 smtpObj.sendmail(sender, receiver, massage.as_string())
 smtpObj.quit()
-print "Email sikeresen elkuldve!"
 
-# sender2 = 'nemeth.csaba@ingart.hu'
-# password2 = "GardA2006"
-# smtpObj2 = smtplib.SMTP_SSL('smtp.gmail.com',465)
-# smtpObj2.ehlo()
-# smtpObj2.login(sender2,password2)
-# smtpObj2.sendmail(sender2, receivers, message)
-# smtpObj2.quit()
+print "Email sikeresen elkuldve!"
 
 # try:
 #     smtpObj = smtplib.SMTP_SSL('smtp.zoho.com',465)
