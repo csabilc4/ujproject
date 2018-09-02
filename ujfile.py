@@ -63,14 +63,8 @@ smtpObj.sendmail(sender, massage["To"].split(",") + massage["Cc"].split(","), ma
 smtpObj.quit()
 
 print "E-mail sikeresen elkuldve!"
-
 # try:
-#     smtpObj = smtplib.SMTP_SSL('smtp.zoho.com',465)
-#     smtpObj.ehlo()
-#     smtpObj.login(sender,password)
-#
-#     smtpObj.sendmail(sender, receivers, message)
-#     print "Email sikeresen elkuldve!"
+#     print "E-mail sikeresen elkuldve!"
 # except:
 #     print "Hiba: Email kuldese sikertelen!"
 
