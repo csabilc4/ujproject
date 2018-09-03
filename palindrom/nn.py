@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 
+
 _sourceFileName1 = 'e:\palin.txt'
 _sourceFileName1 = 'e:\HUN_ENG_dict.txt'
 _targetFileName1 = 'e:\HUN_ENG_dict TARGET2.txt'
