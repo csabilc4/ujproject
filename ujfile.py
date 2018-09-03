@@ -34,8 +34,8 @@ for (dirpath, dirnames, filenames) in walk(mypath):
 # print 'Leghosszabb filenév hossza: \033[1;31m %d \033[0;30m karakter, a file neve: "%s"' % (maxFilename, maxFile)
 
 
-from emailSender import sendEmail
-sendEmail('nemeth.csaba@revolve.hu', subjectText = 'Ez lesz a cím...éáűőúöüóí')
+# from emailSender import sendEmail
+# sendEmail('nemeth.csaba@revolve.hu', subjectText = 'Ez lesz a cím...éáűőúöüóí')
 
 # import smtplib
 # from email.mime.text import MIMEText
@@ -79,6 +79,17 @@ if rrr == True:
     # print ''.join(str(results))
     # print type(str((results[1])))
     print str((results[1]))
+
+
+
+# dic = {'a':1, 'b':2}
+# print dic.has_key('c')
+# print dic.get('c')
+
+print "hali és"
+
+
+
 
 
 
