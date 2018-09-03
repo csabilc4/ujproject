@@ -35,3 +35,10 @@ def sendEmail(receivers, sender = 'revolve@revolve.hu', password = "GardA2006", 
         print "E-mail sikeresen elkuldve!"
     except:
         print "Hiba az e-mail küldése során!"
+
+# print 'test OK!!!!!'
+
+## Testing
+if __name__ == '__main__':
+    # print 'test OK!'
+    pass
