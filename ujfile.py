@@ -86,7 +86,7 @@ if rrr == True:
 # print dic.has_key('c')
 # print dic.get('c')
 
-print "hali éáűőúöüóí"
+print "hali éáűőúöüóí............."
 
 
 
