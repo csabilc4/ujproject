@@ -6,7 +6,7 @@ from email.mime.text import MIMEText
 from email.header import Header
 import time
 
-currentDate = time.strftime("%Y%m%d_%H%M%S")
+currentDate = time.strftime(" %Y.%m.%d-%H:%M:%S")
 
 def sendEmail(receivers, sender = 'revolve@revolve.hu', password = "GardA2006", ccopy = '', subjectText = 'Valami cím kell ide...éáűőúöüóí', massageText = 'Valami szöveg kell ide ..éáűőúöüóí'):
     try:
@@ -20,7 +20,7 @@ def sendEmail(receivers, sender = 'revolve@revolve.hu', password = "GardA2006", 
 
         # Create message
         massage = MIMEText(massageText, 'plain', 'UTF-8')
-        massage['Subject'] = str(Header(subjectText, 'UTF-8'))
+        massage['Subject'] = str(Header(subjectText + currentDate, 'UTF-8'))
         massage['From'] = sender
         massage['To'] = receivers
         massage['Cc'] = ccopy

@@ -6,13 +6,14 @@ from email.mime.text import MIMEText
 from email.header import Header
 import time
 
-currentDate = time.strftime("%Y%m%d_%H%M%S")
+currentDate = time.strftime(" %Y.%m.%d-%H:%M:%S")
 
-class SenderClass:
-    def __init__(self):
-        pass
+class EmailSender:
+    def __init__(self, receivers, subjectText):
+        self.receivers = receivers
+        self.subjectText = subjectText
 
-    def sendEmail(receivers, sender = 'revolve@revolve.hu', password = "GardA2006", ccopy = '', subjectText = 'Valami cím kell ide...éáűőúöüóí', massageText = 'Valami szöveg kell ide ..éáűőúöüóí'):
+    def send(receivers, sender = 'revolve@revolve.hu', password = "GardA2006", ccopy = '', subjectText = 'Valami cím kell ide...éáűőúöüóí', massageText = 'Valami szöveg kell ide ..éáűőúöüóí'):
         try:
             # Define to/from, texts
             # sender = 'revolve@revolve.hu'
@@ -24,7 +25,7 @@ class SenderClass:
 
             # Create message
             massage = MIMEText(massageText, 'plain', 'UTF-8')
-            massage['Subject'] = str(Header(subjectText, 'UTF-8'))
+            massage['Subject'] = str(Header(subjectText + currentDate, 'UTF-8'))
             massage['From'] = sender
             massage['To'] = receivers
             massage['Cc'] = ccopy
