@@ -90,9 +90,6 @@ print "hali éáűőúöüóí............."
 
 
 
-
-
-
 exit()
 
 class TestClass:
