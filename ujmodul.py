@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-print "ez egy uj modul    lesz....."
+import math
+# print '\n'.join(sys.modules)
+# print math.cos(math.radians(60))
 
