@@ -3,6 +3,7 @@
 
 import os
 import time
+import ftfy
 
 # os.chdir('e:/')
 
@@ -65,8 +66,10 @@ def searchForPalindromWords():
   for _line in _file:
     invalidLine = 0
 
-    # _line = _line.lower()
-    line = (_line).rstrip("\n")
+    line = repr(_line)
+    # line = (_line).rstrip("\n")
+
+    print line
 
     for letter in lettersToDelete:
         if letter in line:
@@ -92,9 +95,10 @@ def searchForPalindromWords():
       reverseLine = newLine[::-1]
 
       print newLine, len(newLine), reverseLine, len(reverseLine)
+      # print unicode(reverseLine, "utf-8")
 
       if newLine.lower() == reverseLine.lower():
-        print newLine, reverseLine
+        # print newLine, reverseLine
         palinNum += 1
         palinWords.append(newLine)
 

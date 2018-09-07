@@ -30,10 +30,59 @@ import sys
 
 
 
+# gyumolcsok = ["3alma", "1szőlő", "2korte"]
+# # zoldsegek = ["paradicsom", "uborka", "paprika", "hagyma"]
+# for i, v in zip(gyumolcsok, reversed(zoldsegek)):
+#     print i, "majdnem", v
+#
+# for s in sorted(gyumolcsok):
+#     print s
+
+zoldsegek = {"paradicsom":"jo", "uborka":"szuper", "paprika":"rossz", "hagyma":"gut"}
+
+# for k in zoldsegek.values():
+#     print k
+#
+# k = 1
+# z = 3 + (k <> 2)
+# print z
+
+class Proba():
+    ll = 3
+    def __init__(self, lista = (1,2,3,4)):
+        self.li = lista * self.ll
+        # self.li2 = lista
+        print type(self.li)
+
+    def pp(self, li2=[5,6,7]):
+        print self.li
+        print li2
+        li3 = 4
+k = Proba()
+k.pp()
+
+k2 = Proba()
+k2.pp([10,11])
+# print(Proba.__dict__)
+print Proba.ll
 
 
-dd = 'ave'
-print len(dd)
+
+exit()
+def jj():
+    pass
+jj.temp="affg"
+
+print jj.__dict__
+
+class TempClass():
+    vv = 1
+
+print TempClass.__dict__
+
+
+
+
 
 
 
