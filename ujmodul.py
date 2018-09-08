@@ -47,43 +47,49 @@ zoldsegek = {"paradicsom":"jo", "uborka":"szuper", "paprika":"rossz", "hagyma":"
 # z = 3 + (k <> 2)
 # print z
 
+
 class Proba():
     ll = 3
     def __init__(self, lista = (1,2,3,4)):
+        self.ll = 4
         self.li = lista * self.ll
         # self.li2 = lista
         print type(self.li)
+        print "self.ll =", self.ll
 
     def pp(self, li2=[5,6,7]):
         print self.li
         print li2
         li3 = 4
-k = Proba()
-k.pp()
 
-k2 = Proba()
-k2.pp([10,11])
-# print(Proba.__dict__)
+# k = Proba()
+# k.pp()
+# k2 = Proba()
+# k2.pp([10,11])
 print Proba.ll
 
 
 
-exit()
-def jj():
-    pass
-jj.temp="affg"
 
-print jj.__dict__
+exit()
+temp=11
+def jj(qwe):
+    print qwe
+
+    def jjj(asd):
+        print asd
+
+    jjj(30)
+jj(20)
+
+
+
+# print "jj.temp", jj.temp
 
 class TempClass():
     vv = 1
 
-print TempClass.__dict__
-
-
-
-
-
+# print TempClass.__dict__
 
 
 
