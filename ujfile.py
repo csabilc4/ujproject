@@ -14,20 +14,17 @@ from os import walk
 from bs4 import BeautifulSoup
 import requests
 
-mypath = "f:\Temp"
-
-efiles = listdir(mypath)
-
-f = []
-maxFilename = 0
-maxFile = ""
-
-for (dirpath, dirnames, filenames) in walk(mypath):
-    for files in filenames:
-        # print files, len(files)
-        if len(files) > maxFilename:
-            maxFilename = len(files)
-            maxFile = files
+# mypath = "f:\Temp"
+# efiles = listdir(mypath)
+# f = []
+# maxFilename = 0
+# maxFile = ""
+# for (dirpath, dirnames, filenames) in walk(mypath):
+#     for files in filenames:
+#         # print files, len(files)
+#         if len(files) > maxFilename:
+#             maxFilename = len(files)
+#             maxFile = files
 
     # f.append(filenames)
 
@@ -38,11 +35,10 @@ for (dirpath, dirnames, filenames) in walk(mypath):
 # emailSender.sendEmail('nemeth.csaba@revolve.hu', massageText = 'Ez a szöveg_____éáűőúöüóí', subjectText = 'Ez lesz a cím...éáűőúöüóí')
 
 import emailSenderWithClass
-send=emailSenderWithClass.EmailSender('nemeth.csaba@revolve.hu', subjectText = 'Ez lesz a cím...CLASS', massageText = 'Ez a szöveg...CLASS')
-send.sendEmail()
+send=emailSenderWithClass.EmailSender()
+send.sendEmail('nemeth.csaba@revolve.hu') #, subjectText = 'Ez lesz a cím...CLASS', massageText = 'Ez a szöveg...CLASS')
 
-
-
+exit()
 
 # import smtplib
 # from email.mime.text import MIMEText
