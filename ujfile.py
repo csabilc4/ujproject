@@ -8,25 +8,34 @@
 
 # todo ez is egy tudu!!
 
+zoldsegek = ["paradicsom", "uborka", "paprika", "hagyma"]
+
+for it, zz in enumerate(zoldsegek):
+    print it, 'típusa:', type(it), zz, 'típusa:', type(zz)
+
+
+
+
+exit()
 
 from os import listdir
 from os import walk
 from bs4 import BeautifulSoup
 import requests
 
-# mypath = "f:\Temp"
-# efiles = listdir(mypath)
-# f = []
-# maxFilename = 0
-# maxFile = ""
-# for (dirpath, dirnames, filenames) in walk(mypath):
-#     for files in filenames:
-#         # print files, len(files)
-#         if len(files) > maxFilename:
-#             maxFilename = len(files)
-#             maxFile = files
+mypath = "f:\Temp"
+efiles = listdir(mypath)
+f = []
+maxFilename = 0
+maxFile = ""
+for (dirpath, dirnames, filenames) in walk(mypath):
+    for files in filenames:
+        # print files, len(files)
+        if len(files) > maxFilename:
+            maxFilename = len(files)
+            maxFile = files
 
-    # f.append(filenames)
+    f.append(filenames)
 
 # print 'Leghosszabb filenév hossza: \033[1;31m %d \033[0;30m karakter, a file neve: "%s"' % (maxFilename, maxFile)
 
@@ -70,6 +79,9 @@ if rr == True:
     smtpObj.quit()
 
     print "E-mail sikeresen elkuldve!"
+
+
+
 
 rrr = False
 if rrr == True:
