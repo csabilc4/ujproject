@@ -62,18 +62,19 @@ def siteParser(url):
         mailText += price + '\n'
         mailText += '--------------------------------------------------------------------\n\n'
 
-    # print mailText
+    print mailText
     return mailText
 
 def send(mailT):
     # send=emailSenderWithClass.EmailSender()
     # send.sendEmail('nemeth.csaba@revolve.hu', subjectText = '*****CURRENT RCZ CRAZY PRICES***** csak neked :)', massageText = 'asdfgh')
 
-    emailSender.sendEmail('nemeth.csaba@revolve.hu,motox@freemail.hu,andras@pagem.hu', subjectText = '*****CURRENT RCZ CRAZY PRICES***** csak neked és nekem :)', massageText = mailT)
+    emailSender.sendEmail('nemeth.csaba@revolve.hu,motox@freemail.hu', subjectText = '*****CURRENT RCZ CRAZY PRICES***** csak neked és nekem :)', massageText = mailT)
+    #andras@pagem.hu
 
 def main():
     mailT = siteParser('http://www.rczbikeshop.com/default/sales/crazy-prices.html')
-    send(mailT)
+    # send(mailT)
 
 if __name__ == '__main__':
     main()
