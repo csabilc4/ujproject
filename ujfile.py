@@ -8,10 +8,12 @@
 
 # todo ez is egy tudu!!
 
+
 zoldsegek = ["paradicsom", "uborka", "paprika", "hagyma"]
 
 for it, zz in enumerate(zoldsegek):
     print it, 'típusa:', type(it), zz, 'típusa:', type(zz)
+
 
 
 
