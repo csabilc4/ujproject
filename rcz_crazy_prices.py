@@ -12,7 +12,7 @@ class Page:
     '''parse datas from website'''
     pass
 
-def siteParser(url):
+def siteParser(url='http://www.rczbikeshop.com'):
     getSite = requests.get(url)
 
     # soup = BeautifulSoup(getSite.text, 'html.parser')
@@ -29,7 +29,7 @@ def siteParser(url):
             title = item.find('a', class_='product-image')['title']
         except:
             title = "NO PRODUCT TITLE"
-        # print title#, type(title)
+        # print title, type(title)
 
         # Product link
         try:
