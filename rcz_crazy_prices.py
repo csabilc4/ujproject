@@ -48,7 +48,7 @@ def siteParser(url='http://www.rczbikeshop.com'):
         # Product price
         price = item.find('span', class_='price').text
         if "K" in price:
-            price = "OUT OF STOCK"
+            price = "OUT OF STOCK"  # csak a termék saját weblapján jelenik meg az out of stock, itt nem, ezért sosem lesz out of stock
         price = price.strip()
         # print price.strip()#, type(price)
 
