@@ -4,9 +4,71 @@
 # print "ez itt a pycharmban készült, majd feltöltöm github-baaa"
 # print "na ez egy diff"
 
+import math
+
 # TODO ez itt egy
 
 # todo ez is egy tudu!!
+
+
+zoldsegek = ["parrradicsom", "uborka", "paprika", "hagyma"]
+
+
+
+
+loud = [z.upper() for z in zoldsegek]
+
+print loud
+
+
+exit()
+
+
+
+def lone_sum(a, b, c):
+    list = [a, b, c]
+
+    sum = 0
+    lastN = 0
+
+    for n in list:
+        if n != lastN:
+            sum += n
+            print lastN, sum
+        lastN = n
+        # print n, lastN
+
+    # return sum
+
+print lone_sum(3, 2, 3)
+
+exit()
+
+def make_bricks(small, big, goal):
+    smallB = 1
+    bigB = 5
+
+    biggest = small * smallB + big * bigB
+
+    sum = 0
+    for bi in range(big + 1):
+        for sm in range(small + 1):
+            sum = sm * smallB + bi * bigB
+            # print bi, sm, sum
+            if sum == goal:
+                return True
+
+    return False
+
+print make_bricks(40, 1, 45)
+
+exit()
+
+
+print str(math.pi)[0:4]
+
+
+exit()
 
 
 zoldsegek = ["parrradicsom", "uborka", "paprika", "hagyma"]

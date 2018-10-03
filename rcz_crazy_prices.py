@@ -3,6 +3,7 @@
 import IPython.core.inputtransformer
 from bs4 import BeautifulSoup
 import requests
+import csv
 
 # import emailSenderWithClass
 import emailSender
@@ -15,8 +16,8 @@ class Page:
 def siteParser(url='http://www.rczbikeshop.com'):
     getSite = requests.get(url)
 
-    # soup = BeautifulSoup(getSite.text, 'html.parser')
-    soup = BeautifulSoup(getSite.text, 'lxml')
+    soup = BeautifulSoup(getSite.text, 'html.parser')
+    # soup = BeautifulSoup(getSite.text, 'lxml')
     # print soup.prettify()
 
     mailText = '\n******************NEHOGY LEMARADJ VALAMI AKCIOROL*******************\n'
@@ -52,8 +53,7 @@ def siteParser(url='http://www.rczbikeshop.com'):
         price = price.strip()
         # print price.strip()#, type(price)
 
-        # print "--------------------------------------------------------------------"
-        # print "\n"
+
 
         mailText += '--------------------------------------------------------------------\n'
         mailText += title + '\n'
@@ -64,6 +64,11 @@ def siteParser(url='http://www.rczbikeshop.com'):
 
     print mailText
     return mailText
+
+
+def makeCSV():
+    pass
+
 
 def send(mailT):
     # send=emailSenderWithClass.EmailSender()
