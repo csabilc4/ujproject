@@ -4,6 +4,7 @@ import IPython.core.inputtransformer
 from bs4 import BeautifulSoup
 import requests
 import csv
+import prettytable
 
 # import emailSenderWithClass
 import emailSender
@@ -14,6 +15,10 @@ class Page:
     pass
 
 def siteParser(url='http://www.rczbikeshop.com'):
+    csv_file = open('rcz_csv.csv', 'w')
+    csv_writer = csv.writer(csv_file)
+    csv_writer.writerow(['Title', 'Link', 'Price'])
+
     getSite = requests.get(url)
 
     soup = BeautifulSoup(getSite.text, 'html.parser')
@@ -53,7 +58,7 @@ def siteParser(url='http://www.rczbikeshop.com'):
         price = price.strip()
         # print price.strip()#, type(price)
 
-
+        csv_writer.writerow([title, link, '0.00'])
 
         mailText += '--------------------------------------------------------------------\n'
         mailText += title + '\n'
@@ -62,13 +67,41 @@ def siteParser(url='http://www.rczbikeshop.com'):
         mailText += price + '\n'
         mailText += '--------------------------------------------------------------------\n\n'
 
-    print mailText
+    # print mailText
     return mailText
 
+    csv_file.close()
 
-def makeCSV():
-    pass
+def makeTable(csvFileName):
+    csv_file = open(csvFileName, 'r')
 
+    print prettytable.from_csv(csv_file)
+
+def makeHTML(csvFileName):
+    csv_file = open(csvFileName, 'r')
+
+    line = csv_file.readline()
+    lineList = line.split(",")
+    table = prettytable.PrettyTable(lineList)
+
+    table.format = True
+
+
+    while 1:
+        line = csv_file.readline()
+        if line == '':
+            break
+        lineList = line.split(",")
+        table.add_row(lineList)
+
+
+    # htmlTable = table.get_html_string(attributes={"name":"my_table", "class":"red_table"})
+    htmlTable = table.get_html_string()
+
+    html_file = open('rcz_csv.html', 'w')
+    html_file = html_file.write(htmlTable)
+
+    # html_file.close()
 
 def send(mailT):
     # send=emailSenderWithClass.EmailSender()
@@ -78,8 +111,12 @@ def send(mailT):
     #andras@pagem.hu
 
 def main():
-    mailT = siteParser('http://www.rczbikeshop.com/default/sales/crazy-prices.html')
+    # mailT = siteParser('http://www.rczbikeshop.com/default/sales/crazy-prices.html')
     # send(mailT)
+
+    # makeTable('rcz_csv.csv')
+    makeHTML('rcz_csv.csv')
+    pass
 
 if __name__ == '__main__':
     main()

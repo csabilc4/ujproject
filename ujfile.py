@@ -5,10 +5,115 @@
 # print "na ez egy diff"
 
 import math
-
+import prettytable
+import urllib
+import random
 # TODO ez itt egy
-
 # todo ez is egy tudu!!
+
+
+list1 = ["   parrradicsom ", "            uborka      ", " paprika", "hagyma      "]
+
+# kk = [gy.strip() for gy in list1]
+
+kk = []
+for gy in list1:
+    kk.append(gy.strip())
+
+print kk
+
+exit()
+
+movies = [('a', 1987),
+            ('b', 1526),
+            ('c', 2019),
+            ('d', 1907),
+            ('e', 2437),
+            ('f', 1944),
+            ('g', 2037)]
+
+gmovies = [(title, year) for (title, year) in movies if year < 2000]
+print gmovies
+
+v = [2, -3, 1]
+# mod_v = [vect*4 for vect in v]
+# print mod_v
+print len(v)
+
+exit()
+
+
+def random_walk(n):
+    x = 0
+    y = 0
+    for i in range(n):
+        step = random.choice(['N', 'S', 'E', 'W'])
+        if step == 'N':
+            y += 1
+        elif step == 'S':
+            y -= 1
+        elif step == 'E':
+            x += 1
+        else:
+            x -= 1
+    return (x, y)
+
+for i in range(25):
+    walk = random_walk(10)
+    print "Próba", i, ":", walk, "Távolság: ", abs(walk[0]) + abs(walk[1])
+
+
+
+exit()
+
+resp = urllib.urlopen("https://www.wikipedia.org/")
+print type(resp)
+print resp.code
+data = resp.read()
+print len(data)
+
+
+
+
+exit()
+
+full_name = lambda fn, ln: fn.strip().title() + ' ' + ln.strip().title()
+print full_name(' nEMEtH', ' csABA')
+
+ddd = "   dfsdfjh sdfkh sdf  sdfsdf    "
+eee = "   dfsdfjh sdfkh sdf  sdfsdf    ".strip()
+# print ddd
+# print eee
+
+list1 = ["parrradicsom", "uborka", "paprika", "hagyma"]
+list1.sort()
+print list1
+
+
+def nev():
+    return 5+10
+
+
+def build(a, b, c):
+    # return lambda x: a+b+c+x
+    return c, b, a, nev()
+
+
+print build(1, 2, 3)
+
+exit()
+
+
+
+list1 = ["parrradicsom", "uborka", "paprika", "hagyma"]
+list2 = ["100", "200", "300", "400"]
+
+table = prettytable.PrettyTable(['Zöldségek', 'Árak'])
+for x in range(0,4):
+    table.add_row([list1[x], list2[x]])
+
+
+print table
 
 
 zoldsegek = ["parrradicsom", "uborka", "paprika", "hagyma"]

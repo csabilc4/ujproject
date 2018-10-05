@@ -1,0 +1,12 @@
+<component name="ProjectCodeStyleConfiguration">
+  <code_scheme name="Project" version="173">
+    <Python>
+      <option name="SPACE_AROUND_EQ_IN_NAMED_PARAMETER" value="true" />
+      <option name="SPACE_AROUND_EQ_IN_KEYWORD_ARGUMENT" value="true" />
+      <option name="NEW_LINE_AFTER_COLON" value="true" />
+    </Python>
+    <codeStyleSettings language="Python">
+      <option name="WRAP_ON_TYPING" value="0" />
+    </codeStyleSettings>
+  </code_scheme>
+</component>
