@@ -10,6 +10,8 @@ import urllib
 import random
 # TODO ez itt egy
 # todo ez is egy tudu!!
+# fixme ezis TODO
+# FIXME ez is todo
 
 
 list1 = ["   parrradicsom ", "            uborka      ", " paprika", "hagyma      "]
@@ -32,7 +34,11 @@ movies = [('a', 1987),
             ('f', 1944),
             ('g', 2037)]
 
-gmovies = [(title, year) for (title, year) in movies if year < 2000]
+# gmovies = [(title, year) for (title, year) in movies if year < 2000]
+gmovies = []
+for (title, year) in movies:
+    if year < 2000:
+        gmovies.append((title, year))
 print gmovies
 
 v = [2, -3, 1]
