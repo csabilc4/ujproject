@@ -14,6 +14,7 @@ class Page:
     '''parse datas from website'''
     pass
 
+
 def siteParser(url='http://www.rczbikeshop.com'):
     csv_file = open('rcz_csv.csv', 'w')
     csv_writer = csv.writer(csv_file)

@@ -8,11 +8,123 @@ import math
 import prettytable
 import urllib
 import random
+
 # TODO ez itt egy
 # todo ez is egy tudu!!
 # fixme ezis TODO
 # FIXME ez is todo
 
+
+TRAP_ARTISTS = [
+    'Jay Z',
+    'Dr. Dre',
+    'Easy E'
+]
+
+
+class TrapArtist:
+
+    def __init__(self, name, age):
+        self._name = name
+        self._age = age
+
+    # @property
+    def name(self):
+        return self._name
+
+    # @property
+    def age(self):
+        return self._age
+
+    @staticmethod
+    def naame():
+        return 'ez egy staticmethod'
+
+
+# rr = TrapArtist('Jabba', 21)
+# print rr.name()
+# print rr.age()
+
+print TrapArtist.naame()
+
+exit()
+
+
+class Valami:
+
+    def printt(self):
+        print "ez valamiclass"
+
+
+dd = Valami()
+dd.printt()
+
+exit()
+
+
+def mapper(fnc):
+    def inner():
+        pass
+
+    return inner
+
+
+# @mapper
+def random_c():
+    return random.choice(range(1, 91))
+
+
+def lotto():
+    szamok = []
+    for szam in range(5):
+        szamok.append(str(random_c()))
+
+    return 'A heti nyerőszámok: ' + ', '.join(szamok)
+
+
+print lotto()
+
+exit()
+
+
+def camelcase(s):
+
+    return ''.join([word.capitalize() for word in s.split('_')])
+
+
+print (camelcase('some_string_you_nike'))
+
+exit()
+
+
+def another_function():
+    """
+    decorator
+    :rtype: object
+    """
+    print "Another functionsdfsfgdflkj"
+
+
+def turn_into_another_function(fff):
+    """
+
+    :param f:
+    :return:
+    """
+    return another_function()
+
+
+@turn_into_another_function
+def a_function():
+    print "A function"
+
+
+# a_function = turn_into_another_function(a_function)
+
+
+print a_function.__doc__
+
+exit()
 
 list1 = ["   parrradicsom ", "            uborka      ", " paprika", "hagyma      "]
 
@@ -27,12 +139,12 @@ print kk
 exit()
 
 movies = [('a', 1987),
-            ('b', 1526),
-            ('c', 2019),
-            ('d', 1907),
-            ('e', 2437),
-            ('f', 1944),
-            ('g', 2037)]
+          ('b', 1526),
+          ('c', 2019),
+          ('d', 1907),
+          ('e', 2437),
+          ('f', 1944),
+          ('g', 2037)]
 
 # gmovies = [(title, year) for (title, year) in movies if year < 2000]
 gmovies = []
@@ -64,11 +176,10 @@ def random_walk(n):
             x -= 1
     return (x, y)
 
+
 for i in range(25):
     walk = random_walk(10)
     print "Próba", i, ":", walk, "Távolság: ", abs(walk[0]) + abs(walk[1])
-
-
 
 exit()
 
@@ -77,9 +188,6 @@ print type(resp)
 print resp.code
 data = resp.read()
 print len(data)
-
-
-
 
 exit()
 
@@ -97,7 +205,7 @@ print list1
 
 
 def nev():
-    return 5+10
+    return 5 + 10
 
 
 def build(a, b, c):
@@ -109,31 +217,22 @@ print build(1, 2, 3)
 
 exit()
 
-
-
 list1 = ["parrradicsom", "uborka", "paprika", "hagyma"]
 list2 = ["100", "200", "300", "400"]
 
 table = prettytable.PrettyTable(['Zöldségek', 'Árak'])
-for x in range(0,4):
+for x in range(0, 4):
     table.add_row([list1[x], list2[x]])
-
 
 print table
 
-
 zoldsegek = ["parrradicsom", "uborka", "paprika", "hagyma"]
-
-
-
 
 loud = [z.upper() for z in zoldsegek]
 
 print loud
 
-
 exit()
-
 
 
 def lone_sum(a, b, c):
@@ -151,9 +250,11 @@ def lone_sum(a, b, c):
 
     # return sum
 
+
 print lone_sum(3, 2, 3)
 
 exit()
+
 
 def make_bricks(small, big, goal):
     smallB = 1
@@ -171,25 +272,19 @@ def make_bricks(small, big, goal):
 
     return False
 
+
 print make_bricks(40, 1, 45)
 
 exit()
 
-
 print str(math.pi)[0:4]
 
-
 exit()
-
 
 zoldsegek = ["parrradicsom", "uborka", "paprika", "hagyma"]
 
 for it, zz in enumerate(zoldsegek):
     print it, 'típusa:', type(it), zz, 'típusa:', type(zz)
-
-
-
-
 
 exit()
 
@@ -219,8 +314,10 @@ for (dirpath, dirnames, filenames) in walk(mypath):
 # emailSender.sendEmail('nemeth.csaba@revolve.hu', massageText = 'Ez a szöveg_____éáűőúöüóí', subjectText = 'Ez lesz a cím...éáűőúöüóí')
 
 import emailSenderWithClass
-send=emailSenderWithClass.EmailSender()
-send.sendEmail('nemeth.csaba@revolve.hu') #, subjectText = 'Ez lesz a cím...CLASS', massageText = 'Ez a szöveg...CLASS')
+
+send = emailSenderWithClass.EmailSender()
+send.sendEmail(
+    'nemeth.csaba@revolve.hu')  # , subjectText = 'Ez lesz a cím...CLASS', massageText = 'Ez a szöveg...CLASS')
 
 exit()
 
@@ -248,29 +345,24 @@ if rr == True:
 
     # Create server object with SSL option, Perform operations via server
     smtpObj = smtplib.SMTP_SSL('smtp.zoho.com', 465)
-    smtpObj.login(sender,password)
+    smtpObj.login(sender, password)
     smtpObj.sendmail(sender, receiver, massage.as_string())
     smtpObj.sendmail(sender, massage["To"].split(",") + massage["Cc"].split(","), massage.as_string())
     smtpObj.quit()
 
     print "E-mail sikeresen elkuldve!"
 
-
-
-
 rrr = False
 if rrr == True:
     r = requests.get('http://www.rczbikeshop.com/default/sales/crazy-prices.html')
 
     soup = BeautifulSoup(r.text, 'html.parser')
-    results = soup.find_all('span', attrs={'class':'price'})
+    results = soup.find_all('span', attrs = {'class': 'price'})
     print len(results)
     # print " ".join(results)
     # print ''.join(str(results))
     # print type(str((results[1])))
     print str((results[1]))
-
-
 
 # dic = {'a':1, 'b':2}
 # print dic.has_key('c')
@@ -278,8 +370,8 @@ if rrr == True:
 # print "hali éáűőúöüóí............."
 
 
-
 exit()
+
 
 class TestClass:
     def __init__(self):
@@ -298,6 +390,5 @@ class TestClass:
 
 c = TestClass()
 c.a = 1
-a= 22
+a = 22
 print c.plusOne()
-
