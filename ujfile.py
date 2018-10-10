@@ -14,13 +14,59 @@ import random
 # fixme ezis TODO
 # FIXME ez is todo
 
+cache = {}
+
+def random_c():
+
+    return random.choice(range(1, 91))
+
+
+def lotto():
+    szamok = []
+    for szam in range(5):
+        sz = random_c()
+        if cache.has_key(sz):
+            cache[sz] += 1
+        else:
+            cache[sz] = 1
+        szamok.append(str(sz))
+
+
+
+    # return 'A heti nyerőszámok: ' + ', '.join(szamok)
+    return ', '.join(szamok)
+
+
+huz = 455
+i=0
+while i < huz:
+    lotto()
+    i += 1
+
+szum = 0
+for a, b in cache.items():
+    print "A(z) " + str(a) + "-s szám valószínűsége %s húzásból %5.2f" % (huz, b/455.0*1000/5) + "%"
+    szum += b
+
+print szum
+
+if szum > 400:
+    # raise NameError, 'túl nagy a megadott szám!'
+    pass
+
+print "%010.6f" % (10/3.0)
+
+exit()
+
+
+
+
 
 TRAP_ARTISTS = [
     'Jay Z',
     'Dr. Dre',
     'Easy E'
 ]
-
 
 class TrapArtist:
 
@@ -45,7 +91,7 @@ class TrapArtist:
 # print rr.name()
 # print rr.age()
 
-print TrapArtist.naame()
+# print TrapArtist.naame()
 
 exit()
 
