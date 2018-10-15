@@ -115,6 +115,8 @@ def send(mailT):
     emailSender.sendEmail('nemeth.csaba@revolve.hu,motox@freemail.hu', subjectText = '*****CURRENT RCZ CRAZY PRICES***** csak neked és nekem :)', massageText = mailT)
     #andras@pagem.hu
 
+    #comment 10.15. bemegy-e
+
 def main():
 
     csv_output_fileName = 'rcz_csv_2.csv'
