@@ -8,13 +8,90 @@ import math
 import prettytable
 import urllib
 import random
+import time
 
 # TODO ez itt egy
 # todo ez is egy tudu!!
 # fixme ezis TODO
 # FIXME ez is todo
 
+
 cache = {}
+
+
+
+movies = [('a', 1987),
+          ('b', 1526),
+          ('c', 2019),
+          ('d', 1907),
+          ('e', 2437),
+          ('f', 1944),
+          ('g', 2037)]
+
+gmovies = [(title, year) for (title, year) in movies if year < 2000]
+dmovies = {title.upper(): year for (title, year) in movies if year < 2500 and title == 'e'}
+
+# gmovies = []
+# for (title, year) in movies:
+#     if year < 2000:
+#         gmovies.append((title, year))
+print gmovies, type(gmovies)
+print dmovies, type(dmovies)
+
+# v = [2, -3, 1]
+# mod_v = [vect*4 for vect in v]
+# print mod_v
+# print len(v)
+
+
+
+exit()
+
+class qw:
+
+    aaa = 40
+
+    def __init__(self):
+        # self.aaa = 15
+        pass
+
+    def asd(self):
+        self._asd = 10
+
+    def yxc(self, aaa):
+        # self.aaa = 333
+
+        print self.aaa, aaa
+        # print self._asd
+
+
+ss = qw()
+# ss.aaa = 20
+ss.yxc('10')
+
+exit()
+
+def camelcase(s):
+
+
+    dd = 01
+    cap = [word.capitalize() for word in s.split('_') if dd > 0]
+    capList = ''.join(cap)
+
+    return type(cap), type(capList)\
+
+
+before = time.time()
+print (camelcase('some_string_you_nike_sdgdfghD_HDhrtghR_Rthrth_ERthrthrhr_\
+ERThjrthr_RTHrthrtH_RTHrthrtH_RThrth-rTHrthrt_weterte'))
+after = time.time()
+dur = after - before
+
+print '{:04.3f}'.format(before)
+print '{:04.3f}'.format(after)
+
+exit()
+
 
 def random_c():
 
@@ -129,16 +206,6 @@ def lotto():
 
 
 print lotto()
-
-exit()
-
-
-def camelcase(s):
-
-    return ''.join([word.capitalize() for word in s.split('_')])
-
-
-print (camelcase('some_string_you_nike'))
 
 exit()
 

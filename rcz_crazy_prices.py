@@ -112,7 +112,8 @@ def send(mailT):
     # send=emailSenderWithClass.EmailSender()
     # send.sendEmail('nemeth.csaba@revolve.hu', subjectText = '*****CURRENT RCZ CRAZY PRICES***** csak neked :)', massageText = 'asdfgh')
 
-    emailSender.sendEmail('nemeth.csaba@revolve.hu,motox@freemail.hu', subjectText = '*****CURRENT RCZ CRAZY PRICES***** csak neked és nekem :)', massageText = mailT)
+    emailSender.sendEmail('nemeth.csaba@revolve.hu', subjectText = '*****CURRENT RCZ CRAZY PRICES***** csak neked és nekem :)', massageText = mailT)
+    # emailSender.sendEmail('nemeth.csaba@revolve.hu,motox@freemail.hu', subjectText = '*****CURRENT RCZ CRAZY PRICES***** csak neked és nekem :)', massageText = mailT)
     #andras@pagem.hu
 
     #comment 10.15. bemegy-e
@@ -123,10 +124,10 @@ def main():
     html_output_fileName = 'rcz_csv_2_html.html'
 
     mailT = siteParser('http://www.rczbikeshop.com/default/sales/crazy-prices.html', csv_output_fileName)
-    # send(mailT)
+    send(mailT)
 
     # makeTable(csv_output_fileName)
-    makeHTML(csv_output_fileName, html_output_fileName)
+    # makeHTML(csv_output_fileName, html_output_fileName)
     pass
 
 if __name__ == '__main__':
