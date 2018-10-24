@@ -14,6 +14,7 @@ def sendEmail(receivers, sender = 'revolve@revolve.hu',
               subjectText = 'Valami cím kell ide...éáűőúöüóí',
               massageText = 'Valami szöveg kell ide ..éáűőúöüóí'):
 
+
     try:
         # Define to/from, texts
         # sender = 'revolve@revolve.hu'

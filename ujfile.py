@@ -26,7 +26,6 @@ class Point:
 		return math.hypot(self.x, self.y)
 
 class Circle(Point):
-
 	def __init__(self, radius, x = 0, y = 0):
 		super.__init__(x, y)
 		self.radius = radius
