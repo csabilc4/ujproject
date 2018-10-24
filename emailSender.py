@@ -8,7 +8,12 @@ import time
 
 currentDate = time.strftime(" %Y.%m.%d-%H:%M:%S")
 
-def sendEmail(receivers, sender = 'revolve@revolve.hu', password = "GardA2006", ccopy = '', subjectText = 'Valami cím kell ide...éáűőúöüóí', massageText = 'Valami szöveg kell ide ..éáűőúöüóí'):
+def sendEmail(receivers, sender = 'revolve@revolve.hu',
+              password = "GardA2006",
+              ccopy = '',
+              subjectText = 'Valami cím kell ide...éáűőúöüóí',
+              massageText = 'Valami szöveg kell ide ..éáűőúöüóí'):
+
     try:
         # Define to/from, texts
         # sender = 'revolve@revolve.hu'
