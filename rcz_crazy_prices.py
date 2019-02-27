@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
+
 import IPython.core.inputtransformer
 from bs4 import BeautifulSoup
 import requests
@@ -15,10 +16,10 @@ class Page:
     pass
 
 
-def siteParser(url='http://www.rczbikeshop.com', csv_filename='rcz_csv.csv'):
-    csv_file = open(csv_filename, 'w')
-    csv_writer = csv.writer(csv_file)
-    csv_writer.writerow(['Title', 'Link', 'Price'])
+def makeCSV(url='http://www.rczbikeshop.com', csv_filename='rcz_csv.csv', sendCSV=False):
+    # csv_file = open(csv_filename, 'w')
+    # csv_writer = csv.writer(csv_file)
+    # csv_writer.writerow(['Title', 'Link', 'Price'])
 
     getSite = requests.get(url)
 
@@ -26,23 +27,25 @@ def siteParser(url='http://www.rczbikeshop.com', csv_filename='rcz_csv.csv'):
     # soup = BeautifulSoup(getSite.text, 'lxml')
     # print soup.prettify()
 
-    mailText = '\n******************NEHOGY LEMARADJ VALAMI AKCIOROL*******************\n'
-    mailText += '**************************RCZ CRAZY PRICES**************************\n\n'
+    mailContent = '\n******************NEHOGY LEMARADJ VALAMI AKCIOROL*******************\n'
+    mailContent += '**************************RCZ CRAZY PRICES**************************\n\n'
     for item in soup.find_all('li', class_='item'):
         # print "--------------------------------------------------------------------"
 
         # Product title
         try:
-            title = item.find('a', class_='product-image')['title']
+            title = str(item.find('a', class_='product-image')['title'])
+            # title = type(_title)
+            # title = '<a href = "http://example.com">' + title + '</a>'
         except:
             title = "NO PRODUCT TITLE"
-        # print title, type(title)
+            # print title, type(title)
 
         # Product link
         try:
-            link = item.find('a', class_='product-image')['href']
-            link = '<a href=' + link + '></a>'
-            # link = link
+            link = str(item.find('a', class_='product-image')['href'])
+            # link = '<a href=' + link + '></a>'
+            # link = "href='" + link
         except:
             link = "NO PRODUCT LINK"
         # print link#, type(link)
@@ -56,79 +59,136 @@ def siteParser(url='http://www.rczbikeshop.com', csv_filename='rcz_csv.csv'):
 
         # Product price
         price = item.find('span', class_='price').text
+        # price = _price[1:]
+        # price = _price.decode("UTF-8")
+
         if "K" in price:
-            price = "OUT OF STOCK"  # csak a termék saját weblapján jelenik meg az out of stock, itt nem, ezért sosem lesz out of stock
+            # TODO csak a termék saját weblapján jelenik meg az out of stock,
+            # itt nem, ezért sosem lesz out of stock
+            price = "OUT OF STOCK"
         price = price.strip()
         # print price.strip()#, type(price)
 
-        csv_writer.writerow([title, link, '0.00'])
+        # csv_writer.writerow([title, link, price])
 
-        mailText += '--------------------------------------------------------------------\n'
-        mailText += title + '\n'
-        mailText += link + '\n'
-        mailText += image + '\n'
-        mailText += price + '\n'
-        mailText += '--------------------------------------------------------------------\n\n'
+        mailContent += '--------------------------------------------------------------------\n'
+        mailContent += title + '\n'
+        mailContent += link + '\n'
+        mailContent += image + '\n'
+        mailContent += price + '\n'
+        mailContent += '--------------------------------------------------------------------\n\n'
 
-    # print mailText
-    return mailText
+    print mailContent
+    # csv_file.close()
 
-    csv_file.close()
+    # if sendCSV:
+    #     mailContent = "csv lesz"
+
+    return mailContent
 
 
-def makeTable(csvFileName):
-    csv_file = open(csvFileName, 'r')
+def readCSV(csvFileName):
+    with open(csvFileName, 'r') as csv_file:
+        mailContent =  prettytable.from_csv(csv_file)
+        print mailContent, type(mailContent)
+        # mailContent = ""    #csv_file.readlines()
 
-    print prettytable.from_csv(csv_file)
+    return mailContent
+
+
+def readHTML(htmlFileName):
+    with open(htmlFileName, 'r') as html_file:
+        mailContent = html_file.readlines()
+        # print mailContent, type(mailContent)
+        # mailContent = ""    #csv_file.readlines()
+
+    return mailContent
+
+
+def makeTABLE(csvFileName):
+
+    with open(csvFileName, 'r') as csv_file:
+        print prettytable.from_csv(csv_file)
+        mailContent = csv_file.readlines()
+
+    return mailContent
 
 
 def makeHTML(csvFileName, htmlFileName):
-    csv_file = open(csvFileName, 'r')
-
-    line = csv_file.readline()
-    lineList = line.split(",")
-    table = prettytable.PrettyTable(lineList)
-
-    table.format = True
-
-
-    while 1:
+    with open(csvFileName, 'r') as csv_file:
         line = csv_file.readline()
-        if line == '':
-            break
         lineList = line.split(",")
-        table.align["Link"] = "l"  # Left align city names
-        table.add_row(lineList)
+        table = prettytable.PrettyTable(lineList)
+        table.format = True
 
-    # htmlTable = table.get_html_string(attributes={"name":"my_table", "class":"red_table"})
-    htmlTable = table.get_html_string(padding_width = 2)
+        while 1:
+            line = csv_file.readline()
+            if line == '':
+                break
+            lineList = line.split(",")
+            table.add_row(lineList)
 
-    html_file = open(htmlFileName, 'w')
-    html_file = html_file.write(htmlTable)
+        htmlTable = table.get_html_string(
+                        header = True,
+                        padding_width = 2,
+                        border = True,
+                        hrules = prettytable.ALL,
+                        vrules = prettytable.ALL,
+                        # reversesort = True,
+                        attributes = {"name": "my_table", "class": "red_table"})
 
-    # html_file.close()
+    with open("rcz_html_sample.html", 'r') as sampleHtml_file:
+        sampleContent = sampleHtml_file.readlines()
 
-def send(mailT):
+    with open(htmlFileName, 'w') as html_file:
+        html_file.writelines(sampleContent)
+        html_file.write(htmlTable)
+
+
+def send(mailContent):
     # send=emailSenderWithClass.EmailSender()
     # send.sendEmail('nemeth.csaba@revolve.hu', subjectText = '*****CURRENT RCZ CRAZY PRICES***** csak neked :)', massageText = 'asdfgh')
 
-    emailSender.sendEmail('nemeth.csaba@revolve.hu', subjectText = '*****CURRENT RCZ CRAZY PRICES***** csak neked és nekem :)', massageText = mailT)
-    # emailSender.sendEmail('nemeth.csaba@revolve.hu,motox@freemail.hu', subjectText = '*****CURRENT RCZ CRAZY PRICES***** csak neked és nekem :)', massageText = mailT)
+    emailSender.sendEmail(
+        'nemeth.csaba@revolve.hu',
+        subjectText = '*****CURRENT RCZ CRAZY PRICES***** csak neked és nekem :)',
+        massageText = mailContent)
+
+    # emailSender.sendEmail('nemeth.csaba@revolve.hu,motox@freemail.hu', subjectText = '*****CURRENT RCZ CRAZY PRICES***** csak neked és nekem :)', massageText = mailContent)
     #andras@pagem.hu
 
     #comment 10.15. bemegy-e
 
+
+def make_hyperlink():
+
+
+
+
+    pass
+
+
 def main():
 
-    csv_output_fileName = 'rcz_csv_2.csv'
-    html_output_fileName = 'rcz_csv_2_html.html'
+    csv_output_fileName = 'rcz_csv_out.csv'
+    html_output_fileName = 'rcz_html_out.html'
 
-    mailT = siteParser('http://www.rczbikeshop.com/default/sales/crazy-prices.html', csv_output_fileName)
-    send(mailT)
+    mailContent = makeCSV('http://www.rczbikeshop.com/default/sales/crazy-prices.html', csv_output_fileName, True)
+    # makeTABLE(csv_output_fileName)
 
-    # makeTable(csv_output_fileName)
-    # makeHTML(csv_output_fileName, html_output_fileName)
-    pass
+    # mailContent = makeCSV('http://www.rczbikeshop.com/default/sales/crazy-prices.html', html_output_fileName)
+    # send(mailContent)
+
+    makeHTML(csv_output_fileName, html_output_fileName)
+    # mailContent = readHTML(html_output_fileName)
+
+    # mailContent = makeCSV('http://www.rczbikeshop.com/default/sales/crazy-prices.html', csv_output_fileName, True)
+    # mailContent = readCSV(csv_output_fileName)
+    # mailContent = html_output_fileName
+
+    # mailContent = "asdghjk"
+    # send(mailContent)
+
 
 if __name__ == '__main__':
     main()

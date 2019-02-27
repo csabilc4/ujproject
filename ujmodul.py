@@ -122,11 +122,14 @@ import math
 ########################################################
 
 
+l1 = ['Csabi', 'Tomi', 'Piri']
+l2 = [2, 0, 3]
 
+print {l1[i]:l2[i] for i in range(len(l1))}
 
-
-
-
+sor =[4, 2, 1, 3, 2, 4, 3]
+sor_t = tuple(sor)
+print tuple(sorted(sor_t, reverse = True))
 
 exit()
 

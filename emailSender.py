@@ -24,7 +24,8 @@ def sendEmail(receivers, sender = 'revolve@revolve.hu',
         # massageText = ("Teszt email!! éáűőúöüóí")
 
         # Create message
-        massage = MIMEText(massageText, 'plain', 'UTF-8')
+        # massage = MIMEText(massageText, 'plain', 'UTF-8')
+        massage = MIMEText(massageText, 'html', 'UTF-8')
         massage['Subject'] = str(Header(subjectText + currentDate, 'UTF-8'))
         massage['From'] = sender
         massage['To'] = receivers
@@ -33,12 +34,12 @@ def sendEmail(receivers, sender = 'revolve@revolve.hu',
         # Create server object with SSL option, Perform operations via server
         smtpObj = smtplib.SMTP_SSL('smtp.zoho.com', 465)
         smtpObj.login(sender,password)
-        smtpObj.sendmail(sender, receivers, massage.as_string())
-        smtpObj.sendmail(sender, massage["To"].split(",") + massage["Cc"].split(","), massage.as_string())
+        # smtpObj.sendmail(sender, receivers, massage.as_string())
+        smtpObj.sendmail(sender, massage['To'].split(',') + massage["Cc"].split(','), massage.as_string())
         smtpObj.quit()
 
         print "E-mail sikeresen elkuldve!"
-    except:
+    except ValueError:
         print "Hiba az e-mail küldése során!"
 
 # print 'test OK!!!!!'
